@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DoctorWho.Web", "DoctorWho.Web\DoctorWho.Web.csproj", "{D2ABF188-1730-46A7-B2A7-5C99A44C0DD4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DoctorWho.Db", "DoctorWho.Db\DoctorWho.Db.csproj", "{EE52641B-9A84-49A0-93F0-D6842283BC23}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D2ABF188-1730-46A7-B2A7-5C99A44C0DD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2ABF188-1730-46A7-B2A7-5C99A44C0DD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2ABF188-1730-46A7-B2A7-5C99A44C0DD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2ABF188-1730-46A7-B2A7-5C99A44C0DD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE52641B-9A84-49A0-93F0-D6842283BC23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE52641B-9A84-49A0-93F0-D6842283BC23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE52641B-9A84-49A0-93F0-D6842283BC23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE52641B-9A84-49A0-93F0-D6842283BC23}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {669F4FB9-7B6F-4B15-AC04-2C06107E4647}
+	EndGlobalSection
+EndGlobal
