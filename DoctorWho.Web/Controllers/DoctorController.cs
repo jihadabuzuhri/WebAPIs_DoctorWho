@@ -28,7 +28,6 @@ namespace DoctorWho.Web.Controllers
             return Ok (mapper.Map<IEnumerable<DoctorDto>>(doctors));
         }
 
-
         [HttpPost("{doctorId}")]
         public async Task<ActionResult<DoctorDto>> UpsertDoctor(int doctorId, DoctorForUpsertionDto doctorForUpsertionDto)
         {

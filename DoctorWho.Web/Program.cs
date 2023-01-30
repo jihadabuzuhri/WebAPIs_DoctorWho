@@ -9,7 +9,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddDbContext<DoctorWhoCoreDbContext>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
 builder.Services.AddScoped<IDoctorRepository,DoctorRepository>();
+builder.Services.AddScoped<IEpisodeRepository,EpisodeRepository>();
 
 
 
