@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using DoctorWho.Db;
 using DoctorWho.Db.Repository;
 using DoctorWho.Web.Models;
+using DoctorWho.Web.Validators;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,6 +26,32 @@ namespace DoctorWho.Web.Controllers
         {
             var doctors = await doctorRepository.GetAllDoctorsAsync();
             return Ok (mapper.Map<IEnumerable<DoctorDto>>(doctors));
+        }
+
+
+        [HttpPost("{doctorId}")]
+        public async Task<ActionResult<DoctorDto>> UpsertDoctor(int doctorId, DoctorForUpsertionDto doctorForUpsertionDto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            /*
+            var validator = new DoctorForUpsertionValidator();
+            var result = await validator.ValidateAsync(doctorForUpsertionDto);
+            if (!result.IsValid)
+            {
+                return BadRequest(result.Errors);
+            }
+            */
+
+            var doctor = mapper.Map<Doctor>(doctorForUpsertionDto);
+            
+            var upsertedDoctor = await doctorRepository.UpsertDoctorAsync(doctorId,doctor);
+            
+            return Ok(mapper.Map<DoctorDto>(upsertedDoctor));
+
         }
 
 

@@ -35,6 +35,36 @@ namespace DoctorWho.Db.Repository
             await _context.SaveChangesAsync();
         }
 
+        public async Task<Doctor> UpsertDoctorAsync(int doctorId ,Doctor doctor)
+        {
+            var existingDoctor = await _context.Doctors.FindAsync(doctorId);
+
+            if (existingDoctor == null)
+            {
+                await _context.Doctors.AddAsync(doctor);
+            }
+            else
+            {
+                doctor.DoctorId = doctorId;
+
+                existingDoctor.DoctorName = doctor.DoctorName;
+                existingDoctor.DoctorNumber = doctor.DoctorNumber;
+                existingDoctor.BirthDate = doctor.BirthDate;
+                existingDoctor.FirstEpisodeDate = doctor.FirstEpisodeDate;
+                existingDoctor.LastEpisodeDate = doctor.LastEpisodeDate;
+
+                _context.Doctors.Update(existingDoctor);
+
+            }
+
+            await _context.SaveChangesAsync();
+            return doctor;
+        }
+
+
+
+
+
     }
 
 }

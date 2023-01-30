@@ -6,5 +6,6 @@
         Task AddDoctorAsync(Doctor doctor);
         Task UpdateDoctorAsync(Doctor doctor);
         Task DeleteDoctorAsync(int doctorId);
+        Task<Doctor> UpsertDoctorAsync(int DoctorId, Doctor doctor);
     }
 }

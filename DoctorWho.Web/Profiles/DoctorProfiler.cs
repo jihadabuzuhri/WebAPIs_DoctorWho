@@ -9,6 +9,14 @@ namespace DoctorWho.Web.Profiles
         public DoctorProfiler() {
  
             CreateMap<Doctor, DoctorDto>();
+            
+            //CreateMap<DoctorDto, Doctor > ();
+
+//            CreateMap<Doctor, DoctorForUpsertionDto>();
+            CreateMap< DoctorForUpsertionDto,Doctor>();
+
+
+
 
         }
     }
