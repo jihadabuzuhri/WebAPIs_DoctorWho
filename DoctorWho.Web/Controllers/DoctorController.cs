@@ -54,6 +54,19 @@ namespace DoctorWho.Web.Controllers
 
         }
 
+        [HttpDelete("{doctorId}")]
+        public async Task<ActionResult> DeleteDoctor(int doctorId)
+        {
+            var result = await doctorRepository.DeleteDoctorAsync(doctorId);
+            if (!result)
+            {
+                return NotFound();
+            }
+
+            return NoContent();
+        }
+
+
 
     }
 }

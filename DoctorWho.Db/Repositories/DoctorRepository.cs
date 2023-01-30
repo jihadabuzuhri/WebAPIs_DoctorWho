@@ -28,11 +28,18 @@ namespace DoctorWho.Db.Repository
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteDoctorAsync(int doctorId)
+        public async Task<bool> DeleteDoctorAsync(int doctorId)
         {
             var doctor = await _context.Doctors.FindAsync(doctorId);
+            
+            if (doctor == null)
+            {
+                return false;
+            }
+
             _context.Doctors.Remove(doctor);
             await _context.SaveChangesAsync();
+            return true;
         }
 
         public async Task<Doctor> UpsertDoctorAsync(int doctorId ,Doctor doctor)
