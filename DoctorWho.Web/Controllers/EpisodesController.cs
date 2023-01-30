@@ -22,7 +22,6 @@ namespace DoctorWho.Web.Controllers
             this.mapper = mapper;
         }
 
-        // GET: api/Episodes
         [HttpGet]
         public async Task<ActionResult<IEnumerable<EpisodeDto>>> GetEpisodes()
         {
@@ -52,5 +51,33 @@ namespace DoctorWho.Web.Controllers
             return Ok(episodeDto.EpisodeId);
 
         }
+
+
+        [HttpPost("{episodeId}/enemy/{enemyId}")]
+        public async Task<ActionResult> AddEnemyToEpisode(int episodeId, int enemyId)
+        {
+            var result = await episodeRepository.AddEnemyToEpisodeAsync(episodeId, enemyId);
+            
+            if (!result)
+            {
+                return BadRequest();
+            }
+
+            return NoContent();
+        }
+
+        [HttpPost("{episodeId}/companion/{companionId}")]
+        public async Task<ActionResult> AddCompanionToEpisode(int episodeId, int companionId)
+        {
+            var result = await episodeRepository.AddCompanionToEpisodeAsync(episodeId, companionId);
+            if (!result)
+            {
+                return BadRequest();
+            }
+
+            return NoContent();
+        }
     }
+
+
 }
