@@ -15,14 +15,16 @@ namespace DoctorWho.Db
         public string CallFnCompanions(int Id) => throw new NotSupportedException();
         public string CallFnEnemies(int Id) => throw new NotSupportedException();
 
-
-
+        public DoctorWhoCoreDbContext(DbContextOptions options) : base(options) { }
+        
+        /*
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 
             optionsBuilder.UseSqlServer(@"Server=localhost;Database=DoctorWhoCore;Trusted_Connection=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
 
         }
+        */
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
