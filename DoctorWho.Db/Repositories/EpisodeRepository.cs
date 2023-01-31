@@ -16,16 +16,36 @@ namespace DoctorWho.Db.Repository
             return await _context.Episodes.ToListAsync();
         }
 
+        public async Task<Episode> GetEpisodeAsync(int episodeId)
+        {
+            //var episode = await _context.Episodes.FirstOrDefaultAsync(e => e.EpisodeId == episodeId);
+            
+            var episode = await _context.Episodes.FindAsync(episodeId);
+            return episode;
+            
+        }
+
+
         public async Task AddEpisodeAsync(Episode episode)
         {
             await _context.Episodes.AddAsync(episode);
             await _context.SaveChangesAsync();
         }
 
-        public async Task UpdateEpisodeAsync(Episode episode)
+        public async Task<bool> UpdateEpisodeAsync(int episodeId ,Episode episode)
         {
+            var result = await _context.Episodes.AnyAsync(e => e.EpisodeId == episodeId) ;
+            if (!result)
+            {
+                return false;
+            }
+
+            episode.EpisodeId = episodeId ;
+
             _context.Episodes.Update(episode);
             await _context.SaveChangesAsync();
+
+            return true;
         }
 
         public async Task<bool> DeleteEpisodeAsync(int episodeId)

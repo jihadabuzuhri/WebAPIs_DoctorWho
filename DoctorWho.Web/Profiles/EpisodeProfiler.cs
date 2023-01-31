@@ -10,6 +10,8 @@ namespace DoctorWho.Web.Profiles
         {
             CreateMap<Episode,EpisodeDto >();
             CreateMap<EpisodeForCreationDto, Episode > ();
+            CreateMap<EpisodeForUpdateDto, Episode >();
+
         }
     }
 }

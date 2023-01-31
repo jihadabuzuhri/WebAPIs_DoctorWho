@@ -7,6 +7,7 @@
         Task AddEpisodeAsync(Episode episode);
         Task<bool> DeleteEpisodeAsync(int episodeId);
         Task<List<Episode>> GetAllEpisodesAsync();
-        Task UpdateEpisodeAsync(Episode episode);
+        Task<Episode> GetEpisodeAsync(int episodeId);
+        Task<bool> UpdateEpisodeAsync(int episodeId, Episode episode);
     }
 }

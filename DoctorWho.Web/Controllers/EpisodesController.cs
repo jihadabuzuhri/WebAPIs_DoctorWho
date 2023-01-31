@@ -6,6 +6,7 @@ using DoctorWho.Db;
 using AutoMapper;
 using DoctorWho.Db.Repository;
 using DoctorWho.Web.Models;
+using System.Data.Entity;
 
 namespace DoctorWho.Web.Controllers
 {
@@ -28,6 +29,23 @@ namespace DoctorWho.Web.Controllers
             var episodes = await episodeRepository.GetAllEpisodesAsync();
             return Ok(mapper.Map<IEnumerable<EpisodeDto>>(episodes));
         }
+
+
+        [HttpGet("{episodeId}")]
+        public async Task<ActionResult<EpisodeDto>> GetEpisodes(int episodeId)
+        {
+            var episode = await episodeRepository.GetEpisodeAsync(episodeId);
+           
+            if (episode == null)
+            {
+                return NotFound();
+            }
+            
+            return Ok(mapper.Map<EpisodeDto>(episode));
+        }
+
+
+
 
 
         [HttpPost]
@@ -77,6 +95,25 @@ namespace DoctorWho.Web.Controllers
 
             return NoContent();
         }
+
+
+        // PUT: api/Authors/5
+        [HttpPut("{episodeId}")]
+        public async Task<IActionResult> PutEpisode(int episodeId, EpisodeForUpdateDto episodeForUpdateDto)
+        {
+
+            var episode = mapper.Map<Episode>(episodeForUpdateDto);
+
+            var result = await episodeRepository.UpdateEpisodeAsync(episodeId,episode);
+            if (!result)
+            {
+                return NotFound();
+            }
+
+            return NoContent();
+        }
+
+
     }
 
 
